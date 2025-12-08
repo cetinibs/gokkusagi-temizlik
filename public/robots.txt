@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://gokkusagitemizlik.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow certain file types
+Disallow: *.json$
+Disallow: *.txt$
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important directories
+Allow: /hizmet/
+Allow: /assets/
+Allow: /images/
+
+# Host
+Host: gokkusagitemizlik.com
