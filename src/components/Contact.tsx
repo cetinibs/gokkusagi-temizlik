@@ -17,6 +17,15 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Google Ads Conversion Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-17651373667/sn1UCPfN564bEOOs6uBB',
+        'transaction_id': `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+      });
+    }
+
     // Form gönderimi burada işlenecek
     alert("Mesajınız alındı! En kısa sürede size dönüş yapacağız.");
     setFormData({ name: "", phone: "", email: "", service: "", message: "" });
