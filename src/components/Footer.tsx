@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Logo } from "./Logo";
+import { trackPhoneCall } from "../utils/conversion-tracking";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,6 +22,14 @@ export function Footer() {
     "Üsküdar",
     "Sarıyer"
   ];
+
+  const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>, phoneNumber: string) => {
+    e.preventDefault();
+    trackPhoneCall(phoneNumber);
+    setTimeout(() => {
+      window.location.href = `tel:${phoneNumber}`;
+    }, 100);
+  };
 
   return (
     <footer className="bg-gray-900 text-gray-300">
@@ -63,22 +72,30 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a href="tel:+905524159944" className="hover:text-white transition-colors">
+                <a
+                  href="tel:+905524159944"
+                  onClick={(e) => handlePhoneClick(e, "+905524159944")}
+                  className="hover:text-white transition-colors"
+                >
                   0552 415 99 44
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a href="tel:+905467630261" className="hover:text-white transition-colors">
+                <a
+                  href="tel:+905467630261"
+                  onClick={(e) => handlePhoneClick(e, "+905467630261")}
+                  className="hover:text-white transition-colors"
+                >
                   0546 763 02 61
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm">
                 <MessageCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a 
+                <a
                   href="https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
                   target="_blank"
-                  rel="noopener noreferrer" 
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   WhatsApp

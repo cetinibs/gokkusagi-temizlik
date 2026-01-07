@@ -5,6 +5,7 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
+import { trackPhoneCall } from "../utils/conversion-tracking";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Google Ads Conversion Tracking
+    // Google Ads Conversion Tracking for Form Submission
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'conversion', {
         'send_to': 'AW-17651373667/sn1UCPfN564bEOOs6uBB',
@@ -31,48 +32,63 @@ export function Contact() {
     setFormData({ name: "", phone: "", email: "", service: "", message: "" });
   };
 
+  const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>, phoneNumber: string) => {
+    e.preventDefault();
+    trackPhoneCall(phoneNumber);
+    setTimeout(() => {
+      window.location.href = `tel:${phoneNumber}`;
+    }, 100);
+  };
+
   const contactInfo = [
     {
       icon: Phone,
       title: "Telefon 1",
       content: "0552 415 99 44",
-      link: "tel:+905524159944"
+      link: "tel:+905524159944",
+      phoneNumber: "+905524159944"
     },
     {
       icon: Phone,
       title: "Telefon 2",
       content: "0546 763 02 61",
-      link: "tel:+905467630261"
+      link: "tel:+905467630261",
+      phoneNumber: "+905467630261"
     },
     {
       icon: Phone,
       title: "Telefon 3",
       content: "0530 186 93 10",
-      link: "tel:+905301869310"
+      link: "tel:+905301869310",
+      phoneNumber: "+905301869310"
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       content: "0552 415 99 44",
-      link: "https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+      link: "https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
+      phoneNumber: null
     },
     {
       icon: Mail,
       title: "E-posta",
       content: "info@gokkusagitemizlik.com",
-      link: "mailto:info@gokkusagitemizlik.com"
+      link: "mailto:info@gokkusagitemizlik.com",
+      phoneNumber: null
     },
     {
       icon: MapPin,
       title: "Adres",
       content: "İKİTELİ OSB MAH. İSTEKS B6 BLOK SK. B6 BLOK ISTEKS SANAYI NO:19 BAŞAKŞEHİR/İSTANBUL",
-      link: null
+      link: null,
+      phoneNumber: null
     },
     {
       icon: Clock,
       title: "Çalışma Saatleri",
       content: "7/24 Hizmet",
-      link: null
+      link: null,
+      phoneNumber: null
     }
   ];
 
@@ -92,12 +108,24 @@ export function Contact() {
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             const content = info.link ? (
-              <a 
-                href={info.link} 
-                className="text-blue-600 hover:text-blue-700 transition-colors"
-              >
-                {info.content}
-              </a>
+              info.phoneNumber ? (
+                <a
+                  href={info.link}
+                  onClick={(e) => handlePhoneClick(e, info.phoneNumber!)}
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  {info.content}
+                </a>
+              ) : (
+                <a
+                  href={info.link}
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                  target={info.link.startsWith('https') ? '_blank' : undefined}
+                  rel={info.link.startsWith('https') ? 'noopener noreferrer' : undefined}
+                >
+                  {info.content}
+                </a>
+              )
             ) : (
               <span className="text-gray-700">{info.content}</span>
             );
@@ -184,8 +212,8 @@ export function Contact() {
                 />
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                 size="lg"
               >

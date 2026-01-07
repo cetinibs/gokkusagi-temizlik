@@ -4,6 +4,7 @@ import { Card, CardContent } from "../ui/card";
 import { Check, Phone, ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useNavigate } from "react-router-dom";
+import { trackPhoneCall } from "../../utils/conversion-tracking";
 
 interface ServicePageProps {
   title: string;
@@ -37,7 +38,10 @@ export function ServicePage({
   };
 
   const callPhone = () => {
-    window.location.href = "tel:+905524159944";
+    trackPhoneCall("+905524159944");
+    setTimeout(() => {
+      window.location.href = "tel:+905524159944";
+    }, 100);
   };
 
   return (
@@ -70,8 +74,8 @@ export function ServicePage({
         <div className="container py-6">
           <div className="flex flex-wrap gap-2">
             {keywords.map((keyword, index) => (
-              <Badge 
-                key={index} 
+              <Badge
+                key={index}
                 variant="secondary"
                 className="bg-blue-50 text-blue-700 hover:bg-blue-100"
               >
@@ -156,7 +160,7 @@ export function ServicePage({
                   </div>
 
                   <div className="space-y-3">
-                    <Button 
+                    <Button
                       onClick={openWhatsApp}
                       className="w-full bg-green-600 hover:bg-green-700"
                       size="lg"
@@ -165,7 +169,7 @@ export function ServicePage({
                       WhatsApp ile Teklif Al
                     </Button>
 
-                    <Button 
+                    <Button
                       onClick={callPhone}
                       variant="outline"
                       className="w-full"
