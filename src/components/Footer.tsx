@@ -91,6 +91,16 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm">
+                <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                <a
+                  href="tel:+905301869310"
+                  onClick={(e) => handlePhoneClick(e, "+905301869310")}
+                  className="hover:text-white transition-colors"
+                >
+                  0530 186 93 10
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-sm">
                 <MessageCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <a
                   href="https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."

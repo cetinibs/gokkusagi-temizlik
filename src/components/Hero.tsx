@@ -41,6 +41,14 @@ export function Hero() {
             >
               0546 763 02 61
             </a>
+            <span className="text-white/80 hidden sm:inline">|</span>
+            <a
+              href="tel:+905301869310"
+              onClick={(e) => handlePhoneClick(e, "+905301869310")}
+              className="text-white text-xl font-bold hover:underline transition-all"
+            >
+              0530 186 93 10
+            </a>
             <span className="text-white/90 text-sm hidden sm:inline">- Hemen Arayın, Ücretsiz Teklif Alın!</span>
           </div>
         </div>
