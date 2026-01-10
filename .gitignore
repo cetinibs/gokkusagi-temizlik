@@ -1,1 +1,23 @@
 node_modules
+dist
+.env
+.env.local
+nul
+
+# Prisma
+/src/generated/prisma
+*.db
+*.db-journal
+
+# Uploads
+public/uploads/*
+!public/uploads/.gitkeep
+
+# IDE & OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Agent files
+.agent/

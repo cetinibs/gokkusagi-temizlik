@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
@@ -13,6 +13,9 @@ import { SEOHead } from "./components/SEOHead";
 
 // Lazy load service detail page
 const ServiceDetailPage = lazy(() => import("./components/services/ServiceDetailPage").then(module => ({ default: module.ServiceDetailPage })));
+
+// Lazy load admin panel
+const AdminApp = lazy(() => import("./admin/AdminApp"));
 
 function HomePage() {
   // Homepage structured data
@@ -76,32 +79,60 @@ function HomePage() {
   );
 }
 
+function MainSite() {
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/hizmet/:serviceId"
+            element={
+              <Suspense fallback={
+                <div className="min-h-screen flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+                </div>
+              }>
+                <ServiceDetailPage />
+              </Suspense>
+            }
+          />
+        </Routes>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <ScrollToTopButton />
+    </div>
+  );
+}
+
+function AppRoutes() {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
+
+  if (isAdmin) {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </div>
+      }>
+        <Routes>
+          <Route path="/admin/*" element={<AdminApp />} />
+        </Routes>
+      </Suspense>
+    );
+  }
+
+  return <MainSite />;
+}
+
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route 
-              path="/hizmet/:serviceId" 
-              element={
-                <Suspense fallback={
-                  <div className="min-h-screen flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-                  </div>
-                }>
-                  <ServiceDetailPage />
-                </Suspense>
-              } 
-            />
-          </Routes>
-        </main>
-        <Footer />
-        <WhatsAppButton />
-        <ScrollToTopButton />
-      </div>
+      <AppRoutes />
     </Router>
   );
 }
+
