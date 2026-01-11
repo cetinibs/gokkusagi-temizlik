@@ -6,12 +6,35 @@ import authRoutes from './routes/auth';
 import settingsRoutes from './routes/settings';
 import uploadRoutes from './routes/upload';
 
+// CORS origins
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://gokkusagitemizlik.com',
+    'https://www.gokkusagitemizlik.com',
+    process.env.FRONTEND_URL,
+].filter(Boolean) as string[];
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000', 'https://gokkusagitemizlik.com'],
+    origin: (origin, callback) => {
+        // Allow requests with no origin (mobile apps, curl, etc.)
+        if (!origin) return callback(null, true);
+
+        // Allow Railway preview URLs
+        if (origin.includes('.railway.app') || origin.includes('.pages.dev')) {
+            return callback(null, true);
+        }
+
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+
+        callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
 }));
 app.use(express.json());

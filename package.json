@@ -1,5 +1,5 @@
 {
-      "name": "Gökkuşağı Kurumsal Temizlik Hizmetleri Sitesi",
+      "name": "gokkusagi-temizlik",
       "version": "0.1.0",
       "private": true,
       "dependencies": {
@@ -71,12 +71,17 @@
       "scripts": {
             "dev": "vite",
             "build": "vite build",
+            "start": "node --experimental-specifier-resolution=node --loader tsx/esm server/index.ts",
             "server": "tsx server/index.ts",
             "server:dev": "tsx watch server/index.ts",
+            "postinstall": "prisma generate",
             "db:generate": "npx prisma generate",
             "db:push": "npx prisma db push",
             "db:migrate": "npx prisma migrate dev",
             "db:seed": "tsx prisma/seed.ts",
             "db:studio": "npx prisma studio"
+      },
+      "engines": {
+            "node": ">=18.0.0"
       }
 }
