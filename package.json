@@ -79,7 +79,8 @@
             "db:push": "npx prisma db push",
             "db:migrate": "npx prisma migrate dev",
             "db:seed": "tsx prisma/seed.ts",
-            "db:studio": "npx prisma studio"
+            "db:studio": "npx prisma studio",
+            "db:update-phones": "tsx scripts/update-phone-numbers.ts"
       },
       "engines": {
             "node": ">=18.0.0"
