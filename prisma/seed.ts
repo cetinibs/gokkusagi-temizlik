@@ -64,11 +64,9 @@ async function main() {
         create: {
             id: 'default',
             phones: JSON.stringify([
-                { number: '0552 415 99 44', raw: '+905524159944', label: 'Telefon 1' },
-                { number: '0546 763 02 61', raw: '+905467630261', label: 'Telefon 2' },
-                { number: '0530 186 93 10', raw: '+905301869310', label: 'Telefon 3' },
+                { number: '0546 763 02 61', raw: '+905467630261', label: 'Telefon' },
             ]),
-            whatsapp: '+905524159944',
+            whatsapp: '+905467630261',
             email: 'info@gokkusagitemizlik.com',
             address: 'İKİTELİ OSB MAH. İSTEKS B6 BLOK SK. NO:19 BAŞAKŞEHİR/İSTANBUL',
             workingHours: '7/24 Hizmet',

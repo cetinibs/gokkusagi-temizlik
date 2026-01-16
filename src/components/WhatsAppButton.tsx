@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
-  const phoneNumber = "905524159944"; // Telefon numarası (ülke kodu ile, başında + olmadan)
+  const phoneNumber = "905467630261"; // Telefon numarası (ülke kodu ile, başında + olmadan)
   const message = "Merhaba, temizlik hizmetleri hakkında bilgi almak istiyorum.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -23,11 +23,10 @@ export function WhatsAppButton() {
           <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
         </span>
       </div>
-      
-      <span 
-        className={`overflow-hidden transition-all duration-300 whitespace-nowrap ${
-          isHovered ? "max-w-[200px] opacity-100" : "max-w-0 opacity-0"
-        }`}
+
+      <span
+        className={`overflow-hidden transition-all duration-300 whitespace-nowrap ${isHovered ? "max-w-[200px] opacity-100" : "max-w-0 opacity-0"
+          }`}
       >
         WhatsApp'tan Yazın
       </span>

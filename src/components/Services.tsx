@@ -121,7 +121,7 @@ const services = [
 export function Services() {
   const openWhatsApp = (serviceName: string) => {
     const message = `Merhaba, ${serviceName} hizmeti için teklif almak istiyorum.`;
-    const whatsappUrl = `https://wa.me/905524159944?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/905467630261?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -142,12 +142,12 @@ export function Services() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Link 
+            <Link
               key={index}
               to={`/hizmet/${service.id}`}
               className="block"
             >
-              <Card 
+              <Card
                 className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-200 overflow-hidden cursor-pointer h-full"
               >
                 <div className={`h-2 bg-gradient-to-r ${service.gradient}`} />
@@ -166,8 +166,8 @@ export function Services() {
                   <div className="pt-4 border-t">
                     <p className="text-blue-600">{service.price}</p>
                   </div>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors"
                     onClick={(e) => {
                       e.preventDefault();

@@ -43,30 +43,16 @@ export function Contact() {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Telefon 1",
-      content: "0552 415 99 44",
-      link: "tel:+905524159944",
-      phoneNumber: "+905524159944"
-    },
-    {
-      icon: Phone,
-      title: "Telefon 2",
+      title: "Telefon",
       content: "0546 763 02 61",
       link: "tel:+905467630261",
       phoneNumber: "+905467630261"
     },
     {
-      icon: Phone,
-      title: "Telefon 3",
-      content: "0530 186 93 10",
-      link: "tel:+905301869310",
-      phoneNumber: "+905301869310"
-    },
-    {
       icon: MessageCircle,
       title: "WhatsApp",
-      content: "0552 415 99 44",
-      link: "https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
+      content: "0546 763 02 61",
+      link: "https://wa.me/905467630261?text=Merhaba%2C%20temizlik%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
       phoneNumber: null
     },
     {

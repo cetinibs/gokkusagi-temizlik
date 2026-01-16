@@ -28,7 +28,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <Link 
+        <Link
           to="/"
           className="hover:opacity-80 transition-opacity"
         >
@@ -74,7 +74,7 @@ export function Header() {
           <Button
             variant="default"
             size="sm"
-            onClick={() => window.open("https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmeti%20i%C3%A7in%20teklif%20almak%20istiyorum.", "_blank")}
+            onClick={() => window.open("https://wa.me/905467630261?text=Merhaba%2C%20temizlik%20hizmeti%20i%C3%A7in%20teklif%20almak%20istiyorum.", "_blank")}
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
           >
             <Phone className="h-4 w-4 mr-2" />

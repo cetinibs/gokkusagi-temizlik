@@ -33,14 +33,14 @@ export function ServicePage({
 
   const openWhatsApp = () => {
     const message = `Merhaba, ${title} hizmeti hakkında detaylı bilgi ve fiyat teklifi almak istiyorum.`;
-    const whatsappUrl = `https://wa.me/905524159944?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/905467630261?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
   const callPhone = () => {
-    trackPhoneCall("+905524159944");
+    trackPhoneCall("+905467630261");
     setTimeout(() => {
-      window.location.href = "tel:+905524159944";
+      window.location.href = "tel:+905467630261";
     }, 100);
   };
 
@@ -176,7 +176,7 @@ export function ServicePage({
                       size="lg"
                     >
                       <Phone className="mr-2 h-5 w-5" />
-                      Hemen Ara: 0552 415 99 44
+                      Hemen Ara: 0546 763 02 61
                     </Button>
                   </div>
 

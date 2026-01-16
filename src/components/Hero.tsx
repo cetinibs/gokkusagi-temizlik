@@ -27,27 +27,11 @@ export function Hero() {
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <Phone className="h-5 w-5 text-white animate-pulse" />
             <a
-              href="tel:+905524159944"
-              onClick={(e) => handlePhoneClick(e, "+905524159944")}
-              className="text-white text-xl font-bold hover:underline transition-all"
-            >
-              0552 415 99 44
-            </a>
-            <span className="text-white/80 hidden sm:inline">|</span>
-            <a
               href="tel:+905467630261"
               onClick={(e) => handlePhoneClick(e, "+905467630261")}
               className="text-white text-xl font-bold hover:underline transition-all"
             >
               0546 763 02 61
-            </a>
-            <span className="text-white/80 hidden sm:inline">|</span>
-            <a
-              href="tel:+905301869310"
-              onClick={(e) => handlePhoneClick(e, "+905301869310")}
-              className="text-white text-xl font-bold hover:underline transition-all"
-            >
-              0530 186 93 10
             </a>
             <span className="text-white/90 text-sm hidden sm:inline">- Hemen Arayın, Ücretsiz Teklif Alın!</span>
           </div>
@@ -99,7 +83,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => window.open("https://wa.me/905524159944?text=Merhaba%2C%20temizlik%20hizmeti%20i%C3%A7in%20teklif%20almak%20istiyorum.", "_blank")}
+                onClick={() => window.open("https://wa.me/905467630261?text=Merhaba%2C%20temizlik%20hizmeti%20i%C3%A7in%20teklif%20almak%20istiyorum.", "_blank")}
               >
                 Teklif Al
               </Button>

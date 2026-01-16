@@ -23,7 +23,7 @@ export function trackPhoneCall(phoneNumber: string): void {
 
 /**
  * Handles phone link click with conversion tracking
- * @param phoneNumber - The phone number to call (with country code, e.g., +905524159944)
+ * @param phoneNumber - The phone number to call (with country code, e.g., +905467630261)
  */
 export function handlePhoneClick(phoneNumber: string): void {
   trackPhoneCall(phoneNumber);
