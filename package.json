@@ -53,6 +53,7 @@
             "recharts": "^2.15.2",
             "sonner": "^2.0.3",
             "tailwind-merge": "*",
+            "tsx": "^4.21.0",
             "vaul": "^1.1.2"
       },
       "devDependencies": {
@@ -64,14 +65,13 @@
             "@types/node": "^20.10.0",
             "@vitejs/plugin-react-swc": "^3.10.2",
             "terser": "^5.44.0",
-            "tsx": "^4.21.0",
             "typescript": "^5.9.3",
             "vite": "6.3.5"
       },
       "scripts": {
             "dev": "vite",
             "build": "vite build",
-            "start": "tsx server/index.ts",
+            "start": "node server.js",
             "server": "tsx server/index.ts",
             "server:dev": "tsx watch server/index.ts",
             "postinstall": "prisma generate",
@@ -86,3 +86,6 @@
             "node": ">=18.0.0"
       }
 }
+
+
+
