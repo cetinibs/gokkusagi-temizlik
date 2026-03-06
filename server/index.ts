@@ -17,6 +17,9 @@ const allowedOrigins = [
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const rootDir = process.cwd();
+const uploadsDir = path.join(rootDir, 'public', 'uploads');
+const buildDir = path.join(rootDir, 'build');
 
 // Middleware
 app.use(cors({
@@ -40,7 +43,8 @@ app.use(cors({
 app.use(express.json());
 
 // Serve uploaded files statically
-app.use('/uploads', express.static(path.join(process.cwd(), 'public', 'uploads')));
+app.use('/uploads', express.static(uploadsDir));
+app.use(express.static(buildDir));
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -51,6 +55,15 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/upload', uploadRoutes);
+
+// Let the frontend router handle all non-API routes.
+app.get(/^(?!\/api(?:\/|$)|\/uploads(?:\/|$)).*/, (req, res, next) => {
+    res.sendFile(path.join(buildDir, 'index.html'), (err) => {
+        if (err) {
+            next(err);
+        }
+    });
+});
 
 // Error handling
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

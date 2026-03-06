@@ -71,7 +71,7 @@
       "scripts": {
             "dev": "vite",
             "build": "vite build",
-            "start": "node --experimental-specifier-resolution=node --loader tsx/esm server/index.ts",
+            "start": "tsx server/index.ts",
             "server": "tsx server/index.ts",
             "server:dev": "tsx watch server/index.ts",
             "postinstall": "prisma generate",
